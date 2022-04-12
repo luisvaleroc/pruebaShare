@@ -31,7 +31,33 @@
     <a target="_blank"href="https://api.whatsapp.com/send?text=Aplica%20Banco%20Chile%20https://luisvaleroc.github.io/pruebaShare">Compartir en Whatsapp</a>
     <br>
     <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=https://luisvaleroc.github.io/pruebaShare/">Comparte en LinkedIn</a>
-
+ <section>
+      <img src="thumb.jpg" alt="">
+    </section>
+    <h4><em>Hoy es un buen día para compartir conocimiento...</em></h4>
+    <button id="button">Compartir</button>
+  </main>
  
   </body>
+   <script>
+    const $button = document.querySelector('#button')
+    if ('share' in navigator) {
+      $button.addEventListener('click', share)
+      function share() {
+        navigator.share({
+          title: 'Probando Share API',
+          text: 'Suscríbete a Youtube.com/LeonidasEsteban',
+          url: './thumb.jpg',
+        })
+        .then(()=>{
+          alert('hemos logrado compartir')
+        })
+        .catch(()=>{
+          alert('no se pudo compartir, prueba usando https en un navegador móvil')
+        })
+      }
+    } else {
+      alert('No está disponible el API de web share')
+    }
+  </script>
 </html>
